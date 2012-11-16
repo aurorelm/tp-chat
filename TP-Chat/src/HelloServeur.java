@@ -17,14 +17,31 @@ public class HelloServeur extends UnicastRemoteObject implements Hello {
 		System.out.println(message);
 	}
 
+	
+	
+	
+	public void connect(String id) throws java.rmi.RemoteException{
+	}
+	
+	public void send(String msg) throws java.rmi.RemoteException{
+	}
+	
+	public void bye() throws java.rmi.RemoteException{
+		
+	}
+	public void who() throws java.rmi.RemoteException{
+		
+	}
+	
+	
+	
+	
 	public static void main(String args[]) {
 		int port; 
 		String URL;
 		
 		try { 
 			// transformation d ’une chaîne de caractères en entier
-			
-			//Integer I = new Integer(args[0]);
 			Integer I = new Integer(8080);
 			port = I.intValue();
 		} 

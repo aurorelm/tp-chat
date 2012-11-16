@@ -10,7 +10,7 @@ public static void main(String args[]) {
 		} 
 	
 	catch (Exception exc) { 
-		System .out . println ("Erreur dans HelloClient");
+		System .out . println ("La connexion a echouee");
 		return ; 
 		}
 	}
