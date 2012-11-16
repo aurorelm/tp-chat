@@ -52,9 +52,12 @@ public class HelloServeur extends UnicastRemoteObject implements Hello {
 	
 	
 	public void who() throws java.rmi.RemoteException{
-		
+		int i;
+		System.out.println("Membres connectes : ");
+		for (i = 0; i < this.clients.size(); i++) {
+            System.out.println(this.clients.get(i).getNom());
+		}
 	}
-	
 	
 	
 	
