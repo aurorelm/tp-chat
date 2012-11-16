@@ -1,5 +1,25 @@
 import java.rmi.*;
 public class HelloClient {
+	protected int id;
+	protected String nom;
+	
+	public int getId(){
+		return this.id;
+	}
+	
+	public void setId(int id){
+		this.id=id;
+	}	
+	
+	public String getNom(){
+		return this.nom;
+	}
+	
+	public void setNom(String nom){
+		this.nom=nom;
+	}
+	
+	
 public static void main(String args[]) {
 	try {
 		// Récupération d'un stub sur l'objet serveur.

@@ -1,11 +1,15 @@
+import java.lang.reflect.Array;
 import java.net.InetAddress;
 import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class HelloServeur extends UnicastRemoteObject implements Hello {
 	String message;
+	ArrayList<HelloClient> clients;
+	
 	
 	// Implémentation du constructeur
 	public HelloServeur(String msg) throws java.rmi.RemoteException {
@@ -20,15 +24,33 @@ public class HelloServeur extends UnicastRemoteObject implements Hello {
 	
 	
 	
-	public void connect(String id) throws java.rmi.RemoteException{
+	public void connect(HelloClient client) throws java.rmi.RemoteException{
+		if(clients.contains(client)){
+			System.out.println("Le client est deja connecte");
+			RemoteException erreur = new RemoteException("Le client ne peut pas etre ajoute");
+			throw erreur;
+		}
+		else{
+			clients.add(client);
+		}
 	}
+		
 	
 	public void send(String msg) throws java.rmi.RemoteException{
 	}
 	
-	public void bye() throws java.rmi.RemoteException{
-		
+	public void bye(HelloClient client) throws java.rmi.RemoteException{
+		if(!clients.contains(client)){
+			System.out.println("Le client n'est pas connecte");
+			RemoteException erreur = new RemoteException("Le client ne peut pas etre supprime");
+			throw erreur;
+		}
+		else{
+			clients.remove(client);
+		}
 	}
+	
+	
 	public void who() throws java.rmi.RemoteException{
 		
 	}
